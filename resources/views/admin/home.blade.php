@@ -1,746 +1,728 @@
-@extends('admin.admin-layout')
+@extends('admin.admin-layout') 
 @section('admin_content')
-<div class="content-wrapper">
-            <div class="content">						 
-                  <!-- Top Statistics -->
-                  <div class="row">
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-mini mb-4">
-                        <div class="card-body">
-                          <h2 class="mb-1">71,503</h2>
-                          <p>Online Signups</p>
-                          <div class="chartjs-wrapper">
-                            <canvas id="barChart"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-mini  mb-4">
-                        <div class="card-body">
-                          <h2 class="mb-1">9,503</h2>
-                          <p>New Visitors Today</p>
-                          <div class="chartjs-wrapper">
-                            <canvas id="dual-line"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-mini mb-4">
-                        <div class="card-body">
-                          <h2 class="mb-1">71,503</h2>
-                          <p>Monthly Total Order</p>
-                          <div class="chartjs-wrapper">
-                            <canvas id="area-chart"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-mini mb-4">
-                        <div class="card-body">
-                          <h2 class="mb-1">9,503</h2>
-                          <p>Total Revenue This Year</p>
-                          <div class="chartjs-wrapper">
-                            <canvas id="line"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-
-						<div class="row">
-							<div class="col-xl-8 col-md-12">
-                      <!-- Sales Graph -->
-                      <div class="card card-default" data-scroll-height="675">
-                        <div class="card-header">
-                          <h2>Sales Of The Year</h2>
-                        </div>
-                        <div class="card-body">
-                          <canvas id="linechart" class="chartjs"></canvas>
-                        </div>
-                        <div class="card-footer d-flex flex-wrap bg-white p-0">
-                          <div class="col-6 px-0">
-                            <div class="text-center p-4">
-                              <h4>$6,308</h4>
-                              <p class="mt-2">Total orders of this year</p>
-                            </div>
-                          </div>
-                          <div class="col-6 px-0">
-                            <div class="text-center p-4 border-left">
-                              <h4>$70,506</h4>
-                              <p class="mt-2">Total revenue of this year</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-							<div class="col-xl-4 col-md-12">
-                  <!-- Doughnut Chart -->
-                  <div class="card card-default" data-scroll-height="675">
-                    <div class="card-header justify-content-center">
-                      <h2>Orders Overview</h2>
-                    </div>
-                    <div class="card-body" >
-                      <canvas id="doChart" ></canvas>
-                    </div>
-                    <a href="#" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download overall report</a>
-                    <div class="card-footer d-flex flex-wrap bg-white p-0">
-                      <div class="col-6">
-                        <div class="py-4 px-4">
-                          <ul class="d-flex flex-column justify-content-between">
-                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
-                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-6 border-left">
-                        <div class="py-4 px-4 ">
-                          <ul class="d-flex flex-column justify-content-between">
-                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
-                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-</div>
-						</div>
-
-						<div class="row">
-							<div class="col-xl-4 col-lg-6 col-12">
-								
-                  <!-- Polar and Radar Chart -->
-                  <div class="card card-default">
-                    <div class="card-header justify-content-center">
-                      <h2>Sales Overview</h2>
-                    </div>
-                    <div class="card-body pt-0">
-                      <ul class="nav nav-pills mb-5 mt-5 nav-style-fill nav-justified" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Sales Status</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Monthly Sales</a>
-                        </li>
-                      </ul>
-                      <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                          <canvas id="polar"></canvas>
-                        </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                          <canvas id="radar"></canvas>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-							</div>
-							<div class="col-xl-4 col-lg-6 col-12"> 
-                  <!-- Top Sell Table -->
-                  <div class="card card-table-border-none" data-scroll-height="550">
-                    <div class="card-header justify-content-between">
-                      <h2>Sold by Units</h2>
-                      <div>
-                          <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i></button>
-                          <div class="dropdown show d-inline-block widget-dropdown">
-                              <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-units" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-units">
-                                <li class="dropdown-item"><a  href="#">Action</a></li>
-                                <li class="dropdown-item"><a  href="#">Another action</a></li>
-                                <li class="dropdown-item"><a  href="#">Something else here</a></li>
-                              </ul>
-                            </div>
-                      </div>
-                    </div>
-                    <div class="card-body slim-scroll py-0">
-                      <table class="table ">
-                        <tbody>
-                          <tr>
-                            <td class="text-dark">Backpack</td>
-                            <td class="text-center">9</td>
-                            <td class="text-right">33% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">T-Shirt</td>
-                            <td class="text-center">6</td>
-                            <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">Coat</td>
-                            <td class="text-center">3</td>
-                            <td class="text-right">50% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">Necklace</td>
-                            <td class="text-center">7</td>
-                            <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">Jeans Pant</td>
-                            <td class="text-center">10</td>
-                            <td class="text-right">300% <i class="mdi mdi-arrow-down-bold text-danger pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">Shoes</td>
-                            <td class="text-center">5</td>
-                            <td class="text-right">100% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                          <tr>
-                            <td class="text-dark">T-Shirt</td>
-                            <td class="text-center">6</td>
-                            <td class="text-right">150% <i class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i> </td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                    </div>
-                    <div class="card-footer bg-white py-4">
-                      <a href="#" class="btn-link py-3 text-uppercase">View Report</a>
-                    </div>
-                  </div>
-</div>
-							<div class="col-xl-4 col-12">
-                        <!-- Notification Table -->
-                        <div class="card card-default" data-scroll-height="550">
-                          <div class="card-header justify-content-between ">
-                            <h2>Latest Notifications</h2>
-                            <div>
-                                <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i></button>
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-notification">
-                                      <li class="dropdown-item"><a  href="#">Action</a></li>
-                                      <li class="dropdown-item"><a  href="#">Another action</a></li>
-                                      <li class="dropdown-item"><a  href="#">Something else here</a></li>
-                                    </ul>
-                                  </div>
-                            </div>
-
-                          </div>
-                          <div class="card-body slim-scroll">
-                            <div class="media pb-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
-                                <i class="mdi mdi-cart-outline font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3 ">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Order</a>
-                                <p >Selena has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                            </div>
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
-                                <i class="mdi mdi-email-outline font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Enquiry</a>
-                                <p >Phileine has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 9 AM</span>
-                            </div>
-
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
-                                <i class="mdi mdi-stack-exchange font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">Support Ticket</a>
-                                <p >Emma has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                            </div>
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
-                                <i class="mdi mdi-cart-outline font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New order</a>
-                                <p >Ryan has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                            </div>
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
-                                <i class="mdi mdi-calendar-blank font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="">Comapny Meetup</a>
-                                <p >Phileine has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                            </div>
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
-                                <i class="mdi mdi-stack-exchange font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">Support Ticket</a>
-                                <p >Emma has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                            </div>
-
-                            <div class="media py-3 align-items-center justify-content-between">
-                              <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
-                                <i class="mdi mdi-email-outline font-size-20"></i>
-                              </div>
-                              <div class="media-body pr-3">
-                                <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Enquiry</a>
-                                <p >Phileine has placed an new order</p>
-                              </div>
-                              <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 9 AM</span>
-                            </div>
-
-                          </div>
-                          <div class="mt-3"></div>
-                        </div>
-</div>
-						</div>
-
-						<div class="row">
-							<div class="col-12"> 
-                  <!-- Recent Order Table -->
-                  <div class="card card-table-border-none" id="recent-orders">
-                    <div class="card-header justify-content-between">
-                      <h2>Recent Orders</h2>
-                      <div class="date-range-report ">
-                        <span></span>
-                      </div>
-                    </div>
-                    <div class="card-body pt-0 pb-5">
-                      <table class="table card-table table-responsive table-responsive-large" style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>Order ID</th>
-                            <th>Product Name</th>
-                            <th class="d-none d-md-table-cell">Units</th>
-                            <th class="d-none d-md-table-cell">Order Date</th>
-                            <th class="d-none d-md-table-cell">Order Cost</th>
-                            <th>Status</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td >24541</td>
-                            <td >
-                              <a class="text-dark" href=""> Coach Swagger</a>
-                            </td>
-                            <td class="d-none d-md-table-cell">1 Unit</td>
-                            <td class="d-none d-md-table-cell">Oct 20, 2018</td>
-                            <td class="d-none d-md-table-cell">$230</td>
-                            <td >
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                            <td class="text-right">
-                              <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="" role="button" id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
-                                  <li class="dropdown-item">
-                                    <a href="#">View</a>
-                                  </li>
-                                  <li class="dropdown-item">
-                                    <a href="#">Remove</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td >24541</td>
-                            <td >
-                              <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
-                            </td>
-                            <td class="d-none d-md-table-cell">2 Units</td>
-                            <td class="d-none d-md-table-cell">Nov 15, 2018</td>
-                            <td class="d-none d-md-table-cell">$550</td>
-                            <td >
-                              <span class="badge badge-warning">Delayed</span>
-                            </td>
-                            <td class="text-right">
-                              <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order2">
-                                  <li class="dropdown-item">
-                                    <a href="#">View</a>
-                                  </li>
-                                  <li class="dropdown-item">
-                                    <a href="#">Remove</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td >24541</td>
-                            <td >
-                              <a class="text-dark" href=""> Hat Black Suits</a>
-                            </td>
-                            <td class="d-none d-md-table-cell">1 Unit</td>
-                            <td class="d-none d-md-table-cell">Nov 18, 2018</td>
-                            <td class="d-none d-md-table-cell">$325</td>
-                            <td >
-                              <span class="badge badge-warning">On Hold</span>
-                            </td>
-                            <td class="text-right">
-                              <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order3" data-toggle="dropdown" aria-haspopup="true"
-                                  aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order3">
-                                  <li class="dropdown-item">
-                                    <a href="#">View</a>
-                                  </li>
-                                  <li class="dropdown-item">
-                                    <a href="#">Remove</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td >24541</td>
-                            <td >
-                              <a class="text-dark" href=""> Backpack Gents, Swimming Cap Slin</a>
-                            </td>
-                            <td class="d-none d-md-table-cell">5 Units</td>
-                            <td class="d-none d-md-table-cell">Dec 13, 2018</td>
-                            <td class="d-none d-md-table-cell">$200</td>
-                            <td >
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                            <td class="text-right">
-                              <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order4">
-                                  <li class="dropdown-item">
-                                    <a href="#">View</a>
-                                  </li>
-                                  <li class="dropdown-item">
-                                    <a href="#">Remove</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td >24541</td>
-                            <td >
-                              <a class="text-dark" href=""> Speed 500 Ignite</a>
-                            </td>
-                            <td class="d-none d-md-table-cell">1 Unit</td>
-                            <td class="d-none d-md-table-cell">Dec 23, 2018</td>
-                            <td class="d-none d-md-table-cell">$150</td>
-                            <td >
-                              <span class="badge badge-danger">Cancelled</span>
-                            </td>
-                            <td class="text-right">
-                              <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order5" data-toggle="dropdown" aria-haspopup="true"
-                                  aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order5">
-                                  <li class="dropdown-item">
-                                    <a href="#">View</a>
-                                  </li>
-                                  <li class="dropdown-item">
-                                    <a href="#">Remove</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-</div>
-						</div>
-
-						<div class="row">
-							<div class="col-xl-6"> 
-                  <!-- To Do list -->
-                  <div class="card card-default todo-table" id="todo" data-scroll-height="550">
-                    <div class="card-header justify-content-between">
-                      <h2>To Do List</h2>
-                      <a class="btn btn-primary btn-pill" id="add-task" href="#" role="button"> Add task </a>
-                    </div>
-                    <div class="card-body slim-scroll">
-                      <div class="todo-single-item d-none" id="todo-input">
-                        <form >
-                          <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter Todo" autofocus>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="todo-list" id="todo-list">
-                        <div class="todo-single-item d-flex flex-row justify-content-between finished">
-                          <i class="mdi"></i>
-                          <span >Finish Dashboard UI Kit update</span>
-                          <span class="badge badge-primary">Finished</span>
-                        </div>
-                        <div class="todo-single-item d-flex flex-row justify-content-between current">
-                          <i class="mdi"></i>
-                          <span >Create new prototype for the landing page</span>
-                          <span class="badge badge-primary">Today</span>
-                        </div>
-                        <div class="todo-single-item d-flex flex-row justify-content-between ">
-                          <i class="mdi"></i>
-                          <span > Add new Google Analytics code to all main files </span>
-                          <span class="badge badge-danger">Yesterday</span>
-                        </div>
-
-                        <div class="todo-single-item d-flex flex-row justify-content-between ">
-                          <i class="mdi"></i>
-                          <span >Update parallax scroll on team page</span>
-                          <span class="badge badge-success">Dec 15, 2018</span>
-                        </div>
-
-                        <div class="todo-single-item d-flex flex-row justify-content-between ">
-                          <i class="mdi"></i>
-                          <span >Update parallax scroll on team page</span>
-                          <span class="badge badge-success">Dec 15, 2018</span>
-                        </div>
-                        <div class="todo-single-item d-flex flex-row justify-content-between ">
-                          <i class="mdi"></i>
-                          <span >Create online customer list book</span>
-                          <span class="badge badge-success">Dec 15, 2018</span>
-                        </div>
-                        <div class="todo-single-item d-flex flex-row justify-content-between ">
-                          <i class="mdi"></i>
-                          <span >Lorem ipsum dolor sit amet, consectetur.</span>
-                          <span class="badge badge-success">Dec 15, 2018</span>
-                        </div>
-
-                        <div class="todo-single-item d-flex flex-row justify-content-between mb-1">
-                          <i class="mdi"></i>
-                          <span >Update parallax scroll on team page</span>
-                          <span class="badge badge-success">Dec 15, 2018</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-3"></div>
-                  </div>
-</div>
-							<div class="col-xl-6">
-                  <!-- area chart -->
-                  <div class="card card-default" >
-                    <div class="card-header d-block d-md-flex justify-content-between">
-                      <h2>World Wide Customer </h2>
-                      <div class="dropdown show d-inline-block widget-dropdown ml-auto">
-                        <a class="dropdown-toggle" href="#" role="button" id="world-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                          World Wide
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="world-dropdown">
-                          <li class="dropdown-item"><a href="#">Continetal chart</a></li>
-                          <li class="dropdown-item"><a href="#">Sub-continental</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="card-body vector-map-world">
-                      <div id="world" style="height: 100%; width: 100%;"></div>
-                    </div>
-                    <div class="card-footer d-flex flex-wrap bg-white p-0">
-                      <div class="col-6">
-                        <div class="p-4">
-                          <ul class="d-flex flex-column justify-content-between">
-                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #29cc97"></i>America <span class="float-right">5k</span></li>
-                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff "></i>Australia <span class="float-right">3k</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="p-4 border-left">
-                          <ul class="d-flex flex-column justify-content-between">
-                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Europe <span class="float-right">4k</span></li>
-                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #fe5461"></i>Africa <span class="float-right">2k</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-</div>
-						</div>
-
-						<div class="row">
-							<div class="col-xl-5">
-                  <!-- New Customers -->
-                  <div class="card card-table-border-none"  data-scroll-height="580">
-                    <div class="card-header justify-content-between ">
-                      <h2>New Customers</h2>
-                      <div>
-                          <button class="text-black-50 mr-2 font-size-20">
-                            <i class="mdi mdi-cached"></i>
-                          </button>
-                          <div class="dropdown show d-inline-block widget-dropdown">
-                              <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-customar"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-customar">
-                                <li class="dropdown-item"><a  href="#">Action</a></li>
-                                <li class="dropdown-item"><a  href="#">Another action</a></li>
-                                <li class="dropdown-item"><a  href="#">Something else here</a></li>
-                              </ul>
-                            </div>
-                      </div>
-                    </div>
-                    <div class="card-body pt-0">
-                      <table class="table ">
-                        <tbody>
-                          <tr>
-                            <td >
-                              <div class="media">
-                                <div class="media-image mr-3 rounded-circle">
-                                  <a href="profile.html"><img class="rounded-circle w-45" src="assets/img/user/u1.jpg" alt="customer image"></a>
-                                </div>
-                                <div class="media-body align-self-center">
-                                  <a href="profile.html"><h6 class="mt-0 text-dark font-weight-medium">Selena Wagner</h6></a>
-                                  <small>@selena.oi</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td >2 Orders</td>
-                            <td class="text-dark d-none d-md-block">$150</td>
-                          </tr>
-                          <tr>
-                            <td >
-                              <div class="media">
-                                <div class="media-image mr-3 rounded-circle">
-                                  <a href="profile.html"><img class="rounded-circle w-45" src="assets/img/user/u2.jpg" alt="customer image"></a>
-                                </div>
-                                <div class="media-body align-self-center">
-                                  <a href="profile.html"><h6 class="mt-0 text-dark font-weight-medium">Walter Reuter</h6></a>
-                                  <small>@walter.me</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td >5 Orders</td>
-                            <td class="text-dark d-none d-md-block">$200</td>
-                          </tr>
-                          <tr>
-                            <td >
-                              <div class="media">
-                                <div class="media-image mr-3 rounded-circle">
-                                  <a href="profile.html"><img class="rounded-circle w-45" src="assets/img/user/u3.jpg" alt="customer image"></a>
-                                </div>
-                                <div class="media-body align-self-center">
-                                  <a href="profile.html"><h6 class="mt-0 text-dark font-weight-medium">Larissa Gebhardt</h6></a>
-                                  <small>@larissa.gb</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td >1 Order</td>
-                            <td class="text-dark d-none d-md-block">$50</td>
-                          </tr>
-                          <tr>
-                            <td >
-                              <div class="media">
-                                <div class="media-image mr-3 rounded-circle">
-                                  <a href="profile.html"><img class="rounded-circle w-45" src="assets/img/user/u4.jpg" alt="customer image"></a>
-                                </div>
-                                <div class="media-body align-self-center">
-                                  <a href="profile.html"><h6 class="mt-0 text-dark font-weight-medium">Albrecht Straub</h6></a>
-                                  <small>@albrech.as</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td >2 Orders</td>
-                            <td class="text-dark d-none d-md-block">$100</td>
-                          </tr>
-                          <tr>
-                            <td >
-                              <div class="media">
-                                <div class="media-image mr-3 rounded-circle">
-                                  <a href="profile.html"><img class="rounded-circle w-45" src="assets/img/user/u5.jpg" alt="customer image"></a>
-                                </div>
-                                <div class="media-body align-self-center">
-                                  <a href="profile.html"><h6 class="mt-0 text-dark font-weight-medium">Leopold Ebert</h6></a>
-                                  <small>@leopold.et</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td >1 Order</td>
-                            <td class="text-dark d-none d-md-block">$60</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-</div>
-							<div class="col-xl-7">
-                  <!-- Top Products -->
-                  <div class="card card-default" data-scroll-height="580">
-                    <div class="card-header justify-content-between mb-4">
-                      <h2>Top Products</h2>
-                      <div>
-                          <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i></button>
-                          <div class="dropdown show d-inline-block widget-dropdown">
-                              <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-product" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-product">
-                                <li class="dropdown-item"><a  href="#">Update Data</a></li>
-                                <li class="dropdown-item"><a  href="#">Detailed Log</a></li>
-                                <li class="dropdown-item"><a  href="#">Statistics</a></li>
-                                <li class="dropdown-item"><a  href="#">Clear Data</a></li>
-                              </ul>
-                            </div>
-                      </div>
-
-                    </div>
-                    <div class="card-body py-0">
-                      <div class="media d-flex mb-5">
-                        <div class="media-image align-self-center mr-3 rounded">
-                          <a href="#"><img src="assets/img/products/p1.jpg" alt="customer image"></a>
-                        </div>
-                        <div class="media-body align-self-center">
-                          <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Coach Swagger</h6></a>
-                          <p class="float-md-right"><span class="text-dark mr-2">20</span>Sales</p>
-                          <p class="d-none d-md-block">Statement belting with double-turnlock hardware adds “swagger” to a simple.</p>
-                          <p class="mb-0">
-                            <del>$300</del>
-                            <span class="text-dark ml-3">$250</span>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="media d-flex mb-5">
-                        <div class="media-image align-self-center mr-3 rounded">
-                          <a href="#"><img src="assets/img/products/p2.jpg" alt="customer image"></a>
-                        </div>
-                        <div class="media-body align-self-center">
-                          <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Coach Swagger</h6></a>
-                          <p class="float-md-right"><span class="text-dark mr-2">20</span>Sales</p>
-                          <p class="d-none d-md-block">Statement belting with double-turnlock hardware adds “swagger” to a simple.</p>
-                          <p class="mb-0">
-                            <del>$300</del>
-                            <span class="text-dark ml-3">$250</span>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="media d-flex mb-5">
-                        <div class="media-image align-self-center mr-3 rounded">
-                          <a href="#"><img src="assets/img/products/p3.jpg" alt="customer image"></a>
-                        </div>
-                        <div class="media-body align-self-center">
-                          <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Gucci Watch</h6></a>
-                          <p class="float-md-right"><span class="text-dark mr-2">10</span>Sales</p>
-                          <p class="d-none d-md-block">Statement belting with double-turnlock hardware adds “swagger” to a simple.</p>
-                          <p class="mb-0">
-                            <del>$300</del>
-                            <span class="text-dark ml-3">$50</span>
-                          </p>
-                        </div>
-                      </div>
-                      </div>
-                  </div>
-</div>
-						</div>
-</div>
+    <div class="row match-height">
+        <!-- Medal Card -->
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="card card-congratulation-medal">
+                <div class="card-body">
+                    <h5>Congratulations 🎉 John!</h5>
+                    <p class="card-text font-small-3">You have won gold medal</p>
+                    <h3 class="mb-75 mt-2 pt-50">
+                        <a href="javascript:void(0);">$48.9k</a>
+                    </h3>
+                    <button type="button" class="btn btn-primary">View Sales</button>
+                    <img src="../../../app-assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
+                </div>
+            </div>
         </div>
-@endsection        
+        <!--/ Medal Card -->
+
+        <!-- Statistics Card -->
+        <div class="col-xl-8 col-md-6 col-12">
+            <div class="card card-statistics">
+                <div class="card-header">
+                    <h4 class="card-title">Statistics</h4>
+                    <div class="d-flex align-items-center">
+                        <p class="card-text font-small-2 mr-25 mb-0">Updated 1 month ago</p>
+                    </div>
+                </div>
+                <div class="card-body statistics-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                            <div class="media">
+                                <div class="avatar bg-light-primary mr-2">
+                                    <div class="avatar-content">
+                                        <i data-feather="trending-up" class="avatar-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body my-auto">
+                                    <h4 class="font-weight-bolder mb-0">230k</h4>
+                                    <p class="card-text font-small-3 mb-0">Sales</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                            <div class="media">
+                                <div class="avatar bg-light-info mr-2">
+                                    <div class="avatar-content">
+                                        <i data-feather="user" class="avatar-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body my-auto">
+                                    <h4 class="font-weight-bolder mb-0">8.549k</h4>
+                                    <p class="card-text font-small-3 mb-0">Customers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                            <div class="media">
+                                <div class="avatar bg-light-danger mr-2">
+                                    <div class="avatar-content">
+                                        <i data-feather="box" class="avatar-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body my-auto">
+                                    <h4 class="font-weight-bolder mb-0">1.423k</h4>
+                                    <p class="card-text font-small-3 mb-0">Products</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="media">
+                                <div class="avatar bg-light-success mr-2">
+                                    <div class="avatar-content">
+                                        <i data-feather="dollar-sign" class="avatar-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body my-auto">
+                                    <h4 class="font-weight-bolder mb-0">$9745</h4>
+                                    <p class="card-text font-small-3 mb-0">Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Statistics Card -->
+    </div>
+
+    <div class="row match-height">
+        <div class="col-lg-4 col-12">
+            <div class="row match-height">
+                <!-- Bar Chart - Orders -->
+                <div class="col-lg-6 col-md-3 col-6">
+                    <div class="card">
+                        <div class="card-body pb-50">
+                            <h6>Orders</h6>
+                            <h2 class="font-weight-bolder mb-1">2,76k</h2>
+                            <div id="statistics-order-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Bar Chart - Orders -->
+
+                <!-- Line Chart - Profit -->
+                <div class="col-lg-6 col-md-3 col-6">
+                    <div class="card card-tiny-line-stats">
+                        <div class="card-body pb-50">
+                            <h6>Profit</h6>
+                            <h2 class="font-weight-bolder mb-1">6,24k</h2>
+                            <div id="statistics-profit-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Line Chart - Profit -->
+
+                <!-- Earnings Card -->
+                <div class="col-lg-12 col-md-6 col-12">
+                    <div class="card earnings-card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h4 class="card-title mb-1">Earnings</h4>
+                                    <div class="font-small-2">This Month</div>
+                                    <h5 class="mb-1">$4055.56</h5>
+                                    <p class="card-text text-muted font-small-2">
+                                        <span class="font-weight-bolder">68.2%</span><span> more earnings than last month.</span>
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <div id="earnings-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Earnings Card -->
+            </div>
+        </div>
+
+        <!-- Revenue Report Card -->
+        <div class="col-lg-8 col-12">
+            <div class="card card-revenue-budget">
+                <div class="row mx-0">
+                    <div class="col-md-8 col-12 revenue-report-wrapper">
+                        <div class="d-sm-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title mb-50 mb-sm-0">Revenue Report</h4>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center mr-2">
+                                    <span class="bullet bullet-primary font-small-3 mr-50 cursor-pointer"></span>
+                                    <span>Earning</span>
+                                </div>
+                                <div class="d-flex align-items-center ml-75">
+                                    <span class="bullet bullet-warning font-small-3 mr-50 cursor-pointer"></span>
+                                    <span>Expense</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="revenue-report-chart"></div>
+                    </div>
+                    <div class="col-md-4 col-12 budget-wrapper">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                2020
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="javascript:void(0);">2020</a>
+                                <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                                <a class="dropdown-item" href="javascript:void(0);">2018</a>
+                            </div>
+                        </div>
+                        <h2 class="mb-25">$25,852</h2>
+                        <div class="d-flex justify-content-center">
+                            <span class="font-weight-bolder mr-25">Budget:</span>
+                            <span>56,800</span>
+                        </div>
+                        <div id="budget-chart"></div>
+                        <button type="button" class="btn btn-primary">Increase Budget</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Revenue Report Card -->
+    </div>
+
+    <div class="row match-height">
+        <!-- Company Table Card -->
+        <div class="col-lg-8 col-12">
+            <div class="card card-company-table">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Category</th>
+                                    <th>Views</th>
+                                    <th>Revenue</th>
+                                    <th>Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/toolbox.svg" alt="Toolbar svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Dixons</div>
+                                                <div class="font-small-2 text-muted">meguc@ruj.io</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-primary mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="monitor" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Technology</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">23.4k</span>
+                                            <span class="font-small-2 text-muted">in 24 hours</span>
+                                        </div>
+                                    </td>
+                                    <td>$891.2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">68%</span>
+                                            <i data-feather="trending-down" class="text-danger font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/parachute.svg" alt="Parachute svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Motels</div>
+                                                <div class="font-small-2 text-muted">vecav@hodzi.co.uk</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-success mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="coffee" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Grocery</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">78k</span>
+                                            <span class="font-small-2 text-muted">in 2 days</span>
+                                        </div>
+                                    </td>
+                                    <td>$668.51</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">97%</span>
+                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/brush.svg" alt="Brush svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Zipcar</div>
+                                                <div class="font-small-2 text-muted">davcilse@is.gov</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-warning mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="watch" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Fashion</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">162</span>
+                                            <span class="font-small-2 text-muted">in 5 days</span>
+                                        </div>
+                                    </td>
+                                    <td>$522.29</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">62%</span>
+                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/star.svg" alt="Star svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Owning</div>
+                                                <div class="font-small-2 text-muted">us@cuhil.gov</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-primary mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="monitor" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Technology</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">214</span>
+                                            <span class="font-small-2 text-muted">in 24 hours</span>
+                                        </div>
+                                    </td>
+                                    <td>$291.01</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">88%</span>
+                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/book.svg" alt="Book svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Cafés</div>
+                                                <div class="font-small-2 text-muted">pudais@jife.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-success mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="coffee" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Grocery</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">208</span>
+                                            <span class="font-small-2 text-muted">in 1 week</span>
+                                        </div>
+                                    </td>
+                                    <td>$783.93</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">16%</span>
+                                            <i data-feather="trending-down" class="text-danger font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/rocket.svg" alt="Rocket svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Kmart</div>
+                                                <div class="font-small-2 text-muted">bipri@cawiw.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-warning mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="watch" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Fashion</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">990</span>
+                                            <span class="font-small-2 text-muted">in 1 month</span>
+                                        </div>
+                                    </td>
+                                    <td>$780.05</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">78%</span>
+                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar rounded">
+                                                <div class="avatar-content">
+                                                    <img src="../../../app-assets/images/icons/speaker.svg" alt="Speaker svg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bolder">Payers</div>
+                                                <div class="font-small-2 text-muted">luk@izug.io</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-light-warning mr-1">
+                                                <div class="avatar-content">
+                                                    <i data-feather="watch" class="font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <span>Fashion</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-bolder mb-25">12.9k</span>
+                                            <span class="font-small-2 text-muted">in 12 hours</span>
+                                        </div>
+                                    </td>
+                                    <td>$531.49</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="font-weight-bolder mr-1">42%</span>
+                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Company Table Card -->
+
+        <!-- Developer Meetup Card -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-developer-meetup">
+                <div class="meetup-img-wrapper rounded-top text-center">
+                    <img src="../../../app-assets/images/illustration/email.svg" alt="Meeting Pic" height="170" />
+                </div>
+                <div class="card-body">
+                    <div class="meetup-header d-flex align-items-center">
+                        <div class="meetup-day">
+                            <h6 class="mb-0">THU</h6>
+                            <h3 class="mb-0">24</h3>
+                        </div>
+                        <div class="my-auto">
+                            <h4 class="card-title mb-25">Developer Meetup</h4>
+                            <p class="card-text mb-0">Meet world popular developers</p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="avatar bg-light-primary rounded mr-1">
+                            <div class="avatar-content">
+                                <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="mb-0">Sat, May 25, 2020</h6>
+                            <small>10:AM to 6:PM</small>
+                        </div>
+                    </div>
+                    <div class="media mt-2">
+                        <div class="avatar bg-light-primary rounded mr-1">
+                            <div class="avatar-content">
+                                <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="mb-0">Central Park</h6>
+                            <small>Manhattan, New york City</small>
+                        </div>
+                    </div>
+                    <div class="avatar-group">
+                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Billy Hopkins" class="avatar pull-up">
+                            <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="33" height="33" />
+                        </div>
+                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Amy Carson" class="avatar pull-up">
+                            <img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" width="33" height="33" />
+                        </div>
+                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Brandon Miles" class="avatar pull-up">
+                            <img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" width="33" height="33" />
+                        </div>
+                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Daisy Weber" class="avatar pull-up">
+                            <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
+                        </div>
+                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Jenny Looper" class="avatar pull-up">
+                            <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
+                        </div>
+                        <h6 class="align-self-center cursor-pointer ml-50 mb-0">+42</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Developer Meetup Card -->
+
+        <!-- Browser States Card -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-browser-states">
+                <div class="card-header">
+                    <div>
+                        <h4 class="card-title">Browser States</h4>
+                        <p class="card-text font-small-2">Counter August 2020</p>
+                    </div>
+                    <div class="dropdown chart-dropdown">
+                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="browser-states">
+                        <div class="media">
+                            <img src="../../../app-assets/images/icons/google-chrome.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                            <h6 class="align-self-center mb-0">Google Chrome</h6>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-body-heading mr-1">54.4%</div>
+                            <div id="browser-state-chart-primary"></div>
+                        </div>
+                    </div>
+                    <div class="browser-states">
+                        <div class="media">
+                            <img src="../../../app-assets/images/icons/mozila-firefox.png" class="rounded mr-1" height="30" alt="Mozila Firefox" />
+                            <h6 class="align-self-center mb-0">Mozila Firefox</h6>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-body-heading mr-1">6.1%</div>
+                            <div id="browser-state-chart-warning"></div>
+                        </div>
+                    </div>
+                    <div class="browser-states">
+                        <div class="media">
+                            <img src="../../../app-assets/images/icons/apple-safari.png" class="rounded mr-1" height="30" alt="Apple Safari" />
+                            <h6 class="align-self-center mb-0">Apple Safari</h6>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-body-heading mr-1">14.6%</div>
+                            <div id="browser-state-chart-secondary"></div>
+                        </div>
+                    </div>
+                    <div class="browser-states">
+                        <div class="media">
+                            <img src="../../../app-assets/images/icons/internet-explorer.png" class="rounded mr-1" height="30" alt="Internet Explorer" />
+                            <h6 class="align-self-center mb-0">Internet Explorer</h6>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-body-heading mr-1">4.2%</div>
+                            <div id="browser-state-chart-info"></div>
+                        </div>
+                    </div>
+                    <div class="browser-states">
+                        <div class="media">
+                            <img src="../../../app-assets/images/icons/opera.png" class="rounded mr-1" height="30" alt="Opera Mini" />
+                            <h6 class="align-self-center mb-0">Opera Mini</h6>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="font-weight-bold text-body-heading mr-1">8.4%</div>
+                            <div id="browser-state-chart-danger"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Browser States Card -->
+
+        <!-- Goal Overview Card -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Goal Overview</h4>
+                    <i data-feather="help-circle" class="font-medium-3 text-muted cursor-pointer"></i>
+                </div>
+                <div class="card-body p-0">
+                    <div id="goal-overview-radial-bar-chart" class="my-2"></div>
+                    <div class="row border-top text-center mx-0">
+                        <div class="col-6 border-right py-1">
+                            <p class="card-text text-muted mb-0">Completed</p>
+                            <h3 class="font-weight-bolder mb-0">786,617</h3>
+                        </div>
+                        <div class="col-6 py-1">
+                            <p class="card-text text-muted mb-0">In Progress</p>
+                            <h3 class="font-weight-bolder mb-0">13,561</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Goal Overview Card -->
+
+        <!-- Transaction Card -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-transaction">
+                <div class="card-header">
+                    <h4 class="card-title">Transactions</h4>
+                    <div class="dropdown chart-dropdown">
+                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="transaction-item">
+                        <div class="media">
+                            <div class="avatar bg-light-primary rounded">
+                                <div class="avatar-content">
+                                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="transaction-title">Wallet</h6>
+                                <small>Starbucks</small>
+                            </div>
+                        </div>
+                        <div class="font-weight-bolder text-danger">- $74</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="media">
+                            <div class="avatar bg-light-success rounded">
+                                <div class="avatar-content">
+                                    <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="transaction-title">Bank Transfer</h6>
+                                <small>Add Money</small>
+                            </div>
+                        </div>
+                        <div class="font-weight-bolder text-success">+ $480</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="media">
+                            <div class="avatar bg-light-danger rounded">
+                                <div class="avatar-content">
+                                    <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="transaction-title">Paypal</h6>
+                                <small>Add Money</small>
+                            </div>
+                        </div>
+                        <div class="font-weight-bolder text-success">+ $590</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="media">
+                            <div class="avatar bg-light-warning rounded">
+                                <div class="avatar-content">
+                                    <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="transaction-title">Mastercard</h6>
+                                <small>Ordered Food</small>
+                            </div>
+                        </div>
+                        <div class="font-weight-bolder text-danger">- $23</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="media">
+                            <div class="avatar bg-light-info rounded">
+                                <div class="avatar-content">
+                                    <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="transaction-title">Transfer</h6>
+                                <small>Refund</small>
+                            </div>
+                        </div>
+                        <div class="font-weight-bolder text-success">+ $98</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Transaction Card -->
+    </div>
+                
+@endsection

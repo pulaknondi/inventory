@@ -1,37 +1,39 @@
 @extends('admin.admin-layout')
 @section('admin_content')
-<div class="content-wrapper">
-    <div class="content">							
-        <div class="row">
-			<div class="col-lg-8">
-				<div class="card card-default">
-                    <div class="card-header card-header-border-bottom">
-                        <h2>Create Brand</h2>
-                    </div>
-                    <div class="card-body">
-                        <form >
-                            <div class="form-row">
-                                <div class="col-md-12 mb-3">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="name"  required>
+<!-- Basic multiple Column Form section start -->
+<section id="multiple-column-form">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Brand</h4>
+                </div>
+                <div class="card-body">
+                   <form action="{{ route('brand.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-8 col-12">
+                                <div class="form-group">
+                                    <label for="brand-name">Brand Name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Brand Name" name="name" />
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="description">Description</label>
-                                    <input type="text" class="form-control" id="description" placeholder="description" required>
-                                    
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="image">Image</label>
-                                    <input type="file" class="form-control" id="image"> 
+                                
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="image" class="custom-file-input" id="customFile" >
+                                        <label class="custom-file-label" for="customFile">Choose brand pic</label>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </form>
-                    </div>
+                            <div class="col-8">
+                                <button type="submit" class="btn btn-primary mr-1">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
-</div>
+</section>
+ <!-- Basic Floating Label Form section end -->
 @endsection        

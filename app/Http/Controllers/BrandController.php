@@ -14,7 +14,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.brand');
     }
 
     /**
@@ -35,7 +35,28 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        return view('admin.pages.brand');
+    
+
+        try {
+            // return $request;
+            $image      = $request->file('image');
+            $image_name = date('Ymdhms.') . $image->getClientOriginalExtension();
+            $brand = Brand::create([
+                "name"   => $request->name,
+                "image"  => $image_name
+            ]);
+
+            if ($brand) $image->storeAs('public/image',$image_name);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Brand has been succesfully created.'
+            ]);
+
+        }catch (Exception $e) {
+            return response()->json(['unable' => $e]);
+        }    
+      
     }
 
     /**

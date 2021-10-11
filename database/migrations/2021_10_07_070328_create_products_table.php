@@ -18,17 +18,17 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->string('type');
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('unit_id');
             $table->string('cost');
             $table->string('price');
-            $table->double('qty');
-            $table->double('alert_quantity');
-            $table->string("image", 2048);
-            $table->tinyInteger('featured');
-            $table->text('product_details');
-            $table->tinyInteger('status')->default(0);
+            $table->double('qty')->nullable()->nullable();
+            $table->double('alert_quantity')->nullable();
+            $table->string("image", 2048)->nullable();
+            $table->tinyInteger('featured')->nullable();
+            $table->text('product_details')->nullable();
+            $table->tinyInteger('status')->default(0)->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

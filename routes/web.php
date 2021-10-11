@@ -20,4 +20,5 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.home');
 })->name('dashboard');
-Route::get('/brands',[BrandController::class,'store'])->name('brand.store');
+Route::get('/brands',[BrandController::class,'index'])->name('brand.index');
+Route::post('/brand-store',[BrandController::class,'store'])->name('brand.store');

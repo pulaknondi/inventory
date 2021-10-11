@@ -15,22 +15,22 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->int('reference_no');
+            $table->integer('reference_no');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('supplier_id')->nullable();
             $table->string('item');
             $table->double('total_qty');
             $table->double('total_discount');
             $table->double('total_tax');
             $table->double('total_cost');
-            $table->double('order_tax_rate');
-            $table->double('order_tax');
-            $table->double('shipping_cost');
+            $table->double('order_tax_rate')->nullable();
+            $table->double('order_tax')->nullable();
+            $table->double('shipping_cost')->nullable();
             $table->double('grand_total');
             $table->double('paid_amnout');
-            $table->tinyInteger('status')->default(0)->comment("status 1 = published, 0 = unpublished");
-            $table->tinyInteger('payment_status')->default(0)->comment("status 1 = published, 0 = unpublished");
-            $table->text('note');
+            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('payment_status')->default(0);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

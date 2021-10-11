@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->unsignedBigInteger('expenses_cat_id');
             $table->unsignedBigInteger('user_id');
             $table->string('amount');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

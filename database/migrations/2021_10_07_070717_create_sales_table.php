@@ -24,13 +24,12 @@ class CreateSalesTable extends Migration
             $table->double('total_tax');
             $table->double('total_price');
             $table->double('grand_total');
-            $table->double('shipping_cost');
-            $table->double('total_discount');
-            $table->tinyInteger('sale_status')->default(0)->comment("status 1 = published, 0 = unpublished");
-            $table->tinyInteger('payment_status')->default(0)->comment("status 1 = published, 0 = unpublished");
-            $table->double('paid_amount');
-            $table->text('sale_note');
-            $table->text('staff_note');
+            $table->double('shipping_cost')->nullable();
+            $table->tinyInteger('sale_status')->default(0);
+            $table->tinyInteger('payment_status')->default(0);
+            $table->double('paid_amount')->nullable();
+            $table->text('sale_note')->nullable();
+            $table->text('staff_note')->nullable();
             $table->timestamps();
         });
     }

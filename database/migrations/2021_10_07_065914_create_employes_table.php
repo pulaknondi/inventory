@@ -17,12 +17,12 @@ class CreateEmployesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('phone_number');
-            $table->string('image');
-            $table->string('country');
-            $table->string('city');;
-            $table->string('address');
+            $table->string('image')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
