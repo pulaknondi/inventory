@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Brand</h4>
+                    <h4 class="card-title">Create Brand</h4>
                 </div>
                 <div class="card-body">
                    <form action="{{ route('brand.store') }}" method="post" enctype="multipart/form-data">
@@ -34,6 +34,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> 
  <!-- Basic Floating Label Form section end -->
 @endsection        

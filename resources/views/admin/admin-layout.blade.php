@@ -9,10 +9,16 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
+    <title>Inventory Mangement System</title>
     <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+    <!-- BEGIN: table CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"  crossorigin="anonymous">
+     <!-- END: table CSS-->
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/vendors/css/vendors.min.css') }}">
@@ -35,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/plugins/charts/chart-apex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/plugins/extensions/ext-component-toastr.css') }}">
     <!-- END: Page CSS-->
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"  crossorigin="anonymous">
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
@@ -167,6 +173,8 @@
                 
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('brand.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Brands</span></a>
                 </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('category.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Categories</span></a>
+                </li>
                 
             </ul>
         </div>
@@ -215,21 +223,22 @@
     <script src="{{ asset('/backend/app-assets/js/core/app-menu.js') }}"></script>
     <script src="{{ asset('/backend/app-assets/js/core/app.js') }}"></script>
     <!-- END: Theme JS-->
-
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('/backend/app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
     <!-- END: Page JS-->
 
-    <script>
-        $(window).on('load', function() {
-            if (feather) {
-                feather.replace({
-                    width: 14,
-                    height: 14
-                });
-            }
-        })
-    </script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>    
+    <!-- END: Page Vendor JS-->
+    
 </body>
 <!-- END: Body-->
 

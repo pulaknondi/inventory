@@ -14,7 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.brand');
+        $brands = Brand::all();
+        return view('admin.pages.brand.index',compact('brands'));
     }
 
     /**
@@ -24,7 +25,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.brand.create');
     }
 
     /**
@@ -35,8 +36,6 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-    
-
         try {
             // return $request;
             $image      = $request->file('image');
@@ -76,9 +75,10 @@ class BrandController extends Controller
      * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(brand $brand)
+    public function edit($id)
     {
-        //
+        $data = Brand::findOrFail($id);
+        return view('admin.pages.brand.edit',compact('data'));
     }
 
     /**
@@ -88,9 +88,27 @@ class BrandController extends Controller
      * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, brand $brand)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            // return $request;
+            $image      = $request->file('image');
+            $image_name = date('Ymdhms.') . $image->getClientOriginalExtension();
+            $brand = Brand::findOrFail($id)->update([
+                "name"   => $request->name,
+                "image"  => $image_name
+            ]);
+
+            if ($brand) $image->storeAs('public/image',$image_name);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Brand has been succesfully Updated.'
+            ]);
+
+        }catch (Exception $e) {
+            return response()->json(['unable' => $e]);
+        }  
     }
 
     /**
