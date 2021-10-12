@@ -25,13 +25,12 @@ class product extends Model
         'status'
     ];
 
-    public function get_brand()
+    public function brand()
     {
-        return $this->belongsTo(Brand::class, 'brand')->select('id', 'name');
+        return $this->belongsTo(brand::class)->select('id', 'name');
     }
-
-    public function get_category()
+    public function category()
     {
-        return $this->belongsTo(District::class, 'category')->select('id', 'name');
+        return $this->belongsTo(Categories::class)->select('id', 'name');
     }
 }

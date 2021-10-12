@@ -175,6 +175,8 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('category.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Categories</span></a>
                 </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('product.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Products</span></a>
+                </li>
                 
             </ul>
         </div>
