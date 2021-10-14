@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use App\Models\brand;
 use App\Models\categories;
+use App\Models\unit;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -30,7 +31,8 @@ class ProductController extends Controller
         $products   = Product::all();
         $brands     = Brand::all();
         $categories = Categories::all();
-        return view('admin.pages.product.create',compact('products','brands','categories'));
+        $units = Unit::all();
+        return view('admin.pages.product.create',compact('products','brands','categories','units'));
     }
 
     /**
@@ -41,7 +43,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        try {
+            // return $request;
+            $image      = $request->file('image');
+            $image_name = date('Ymdhms.') . $image->getClientOriginalExtension();
+            $product = Product::create([
+                "name"      => $request->name,
+                "code"      => $request->code,
+                "type"      => $request->type,
+                "brand_id"     => $request->brand,
+                "category_id"  => $request->category,
+                "unit_id"    => $request->unit,
+                "cost"      => $request->cost,
+                "price"     => $request->price,
+                "qty"       => $request->quantity,
+                "alert_quantity"    => $request->alrt_qty,
+                "image"        => $image_name,
+                "featured"     => $request->feature,
+                "product_details"  => $request->description,
+            ]);
+
+            if ($product) $image->storeAs('public/image',$image_name);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Product has been succesfully created.'
+            ]);
+
+        }catch (Exception $e) {
+            return response()->json(['unable' => $e]);
+        }    
     }
 
     /**

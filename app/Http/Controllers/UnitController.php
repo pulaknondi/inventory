@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\suppliers;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
-class SuppliersController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-       $suppliers = Suppliers::all();  
-       return view('admin.pages.supplier.index',compact('suppliers'));
+       $units = Unit::all(); 
+       return view('admin.pages.unit.index',compact('units'));
     }
 
     /**
@@ -25,7 +25,7 @@ class SuppliersController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.supplier.create');
+        return view('admin.pages.unit.create');
     }
 
     /**
@@ -36,16 +36,33 @@ class SuppliersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            // return $request;
+           
+            $category = Unit::create([
+                "unit_code"   => $request->unit_code,
+                "unit_name"   => $request->unit_name,
+                "base_unit"   => $request->base_unit,
+                "operator"   => $request->base_operator,
+                "operation_value"   => $request->operation_value,
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Unit has been succesfully created.'
+            ]);
+
+        }catch (Exception $e) {
+            return response()->json(['unable' => $e]);
+        }   
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\suppliers  $suppliers
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function show(suppliers $suppliers)
+    public function show(Unit $unit)
     {
         //
     }
@@ -53,10 +70,10 @@ class SuppliersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\suppliers  $suppliers
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit(suppliers $suppliers)
+    public function edit(Unit $unit)
     {
         //
     }
@@ -65,10 +82,10 @@ class SuppliersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\suppliers  $suppliers
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, suppliers $suppliers)
+    public function update(Request $request, Unit $unit)
     {
         //
     }
@@ -76,10 +93,10 @@ class SuppliersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\suppliers  $suppliers
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(suppliers $suppliers)
+    public function destroy(Unit $unit)
     {
         //
     }

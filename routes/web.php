@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\SuppliersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,15 @@ Route::get('/product-create',[ProductController::class,'create'])->name('product
 Route::post('/product-store',[ProductController::class,'store'])->name('product.store');
 Route::get('/product-edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route::post('/product-update/{id}',[ProductController::class,'update'])->name('product.update');
+
+Route::get('/unit',[UnitController::class,'index'])->name('unit.index');
+Route::get('/unit-create',[UnitController::class,'create'])->name('unit.create');
+Route::post('/unit-store',[UnitController::class,'store'])->name('unit.store');
+Route::get('/unit-edit/{id}',[UnitController::class,'edit'])->name('unit.edit');
+Route::post('/unit-update/{id}',[UnitController::class,'update'])->name('unit.update');
+
+Route::get('/supplier',[SuppliersController::class,'index'])->name('supplier.index');
+Route::get('/supplier-create',[SuppliersController::class,'create'])->name('supplier.create');
+Route::post('/supplier-store',[SuppliersController::class,'store'])->name('supplier.store');
+Route::get('/supplier-edit/{id}',[SuppliersController::class,'edit'])->name('supplier.edit');
+Route::post('/supplier-update/{id}',[SuppliersController::class,'update'])->name('supplier.update');

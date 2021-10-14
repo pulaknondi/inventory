@@ -26,6 +26,12 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
+                                    <label for="last-name-column">type</label>
+                                    <input type="text" id="last-name-column" class="form-control" placeholder="type" name="type" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="customSelect">Select Brand</label>
                                     <select class="custom-select" id="brand" name="brand">
                                         <option selected="">Open brand menu</option>
@@ -48,8 +54,13 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="company-column">Unit Id</label>
-                                    <input type="text" id="company-column" class="form-control" name="unitid" placeholder="Unit id" />
+                                    <label for="company-column">Unit</label>
+                                    <select class="custom-select" id="category" name="unit">
+                                        <option selected="">Chose Unit</option>
+                                        <?php foreach($units as $unit): ?>
+                                        <option value="{{ $unit->id}}"><?php  if($unit->base_unit == 1): echo "peice"; elseif($unit->base_unit == 2): echo "Meter"; else: echo "Kilogram"; endif ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">

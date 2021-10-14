@@ -177,7 +177,16 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('product.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Products</span></a>
                 </li>
-                
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('unit.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Units</span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">People</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="{{route('supplier.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Supplier List</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Customer List</span></a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
