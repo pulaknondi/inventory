@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\purchases;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -24,7 +25,9 @@ class PurchasesController extends Controller
      */
     public function create()
     {
-        //
+        $products = product::all(); 
+        
+        return view('admin.pages.purchases.create',compact('products'));
     }
 
     /**

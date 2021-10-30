@@ -33,7 +33,7 @@
         <tr>
             <td>{{ $brand->id}}</td>
             <td>{{ $brand->name}}</td>
-            <td><img alt="Photo" src="{{ asset('storage/image/'.$brand->image) }}"></td>
+            <td><img alt="Photo" width="70" height="40" src="{{ asset('storage/image/'.$brand->image) }}"></td>
             <td><div class="dropdown">
             <button class="btn btn-sm btn-circle btn-outline-success btn-pill" data-toggle="dropdown">
                 <i class="la la-cog"></i>Action

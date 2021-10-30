@@ -27,4 +27,5 @@ class purchases extends Model
         'payment_status',
         'note',
     ];
+
 }

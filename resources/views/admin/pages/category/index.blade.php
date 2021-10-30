@@ -33,7 +33,7 @@
         <tr>
             <td>{{ $category->id}}</td>
             <td>{{ $category->name}}</td>
-            <td><img alt="Photo" src="{{ asset('storage/image/'.$category->image) }}"></td>
+            <td><img alt="Photo" width="70" height="40" src="{{ asset('storage/image/'.$category->image) }}"></td>
             <td><div class="dropdown">
             <button class="btn btn-sm btn-circle btn-outline-success btn-pill" data-toggle="dropdown">
                 <i class="la la-cog"></i>Action

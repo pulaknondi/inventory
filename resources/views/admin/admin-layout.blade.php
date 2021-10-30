@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/bootstrap-extended.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/colors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/components.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/themes/dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/css/themes/bordered-layout.css') }}">
@@ -171,19 +172,27 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('brand.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Brands</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('brand.index')}}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg><span class="menu-title text-truncate" data-i18n="Kanban">Brands</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('category.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Categories</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('category.index')}}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="menu-title text-truncate" data-i18n="Kanban">Categories</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('product.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Products</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('product.index')}}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></i><span class="menu-title text-truncate" data-i18n="Kanban">Products</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('unit.index')}}"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Units</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('unit.index')}}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="menu-title text-truncate" data-i18n="Kanban">Units</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">People</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="menu-title text-truncate" data-i18n="Invoice">People</span></a>
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="{{route('supplier.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Supplier List</span></a>
                         </li>
                         <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Customer List</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>Purchases</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="{{route('purchases.create')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Purchases</span></a>
+                        </li>
+                        <li><a class="d-flex align-items-center" href="{{route('purchases.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Purchases List</span></a>
                         </li>
                     </ul>
                 </li>
@@ -237,7 +246,8 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('/backend/app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
     <!-- END: Page JS-->
-
+    <script src="{{ asset('/backend/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/backend/app-assets/js/scripts/forms/form-select2.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

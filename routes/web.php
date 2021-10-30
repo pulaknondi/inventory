@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\PurchasesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,9 @@ Route::get('/supplier-create',[SuppliersController::class,'create'])->name('supp
 Route::post('/supplier-store',[SuppliersController::class,'store'])->name('supplier.store');
 Route::get('/supplier-edit/{id}',[SuppliersController::class,'edit'])->name('supplier.edit');
 Route::post('/supplier-update/{id}',[SuppliersController::class,'update'])->name('supplier.update');
+
+Route::get('/purchases',[PurchasesController::class,'index'])->name('purchases.index');
+Route::get('/purchases-create',[PurchasesController::class,'create'])->name('purchases.create');
+Route::post('/purchases-store',[PurchasesController::class,'store'])->name('purchases.store');
+Route::get('/purchases-edit/{id}',[PurchasesController::class,'edit'])->name('purchases.edit');
+Route::post('/purchases-update/{id}',[PurchasesController::class,'update'])->name('purchases.update');
