@@ -9,6 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Inventory Mangement System</title>
     <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"  crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"  crossorigin="anonymous">
      <!-- END: table CSS-->
-
+     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/backend/app-assets/vendors/css/charts/apexcharts.css') }}">
@@ -229,7 +230,8 @@
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
 
-
+    
+    
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('/backend/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
@@ -246,6 +248,11 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('/backend/app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
     <!-- END: Page JS-->
+
+    <script src="{{ asset('/backend/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
+    <script src="{{ asset('/backend/app-assets/js/scripts/forms/form-number-input.js') }}"></script>
+
+
     <script src="{{ asset('/backend/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('/backend/app-assets/js/scripts/forms/form-select2.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->

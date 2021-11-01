@@ -119,4 +119,14 @@ class ProductController extends Controller
     {
         //
     }
+    public function getProbyid(Request $request){
+
+        $pro_id = $request->pro_id;
+  
+        $products = Product::select('*')->where('id', $pro_id)->get();
+  
+        // Fetch all records
+        $response['data'] = $products;
+        return response()->json($response);
+      }
 }
