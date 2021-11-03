@@ -104,7 +104,7 @@
            var name = response['data'][i].name;
            var cost = response['data'][i].cost;
            var qty = response['data'][i].qty;
-
+  
            var tr_str = "<tr>" +
              "<td align='center'>" + (id) + "</td>" +
              "<td align='center'>" + name + "</td>" +
@@ -114,9 +114,10 @@
              "<td align='center'></td>" +
              "<td align='center'></td>" +
            "</tr>";
-          
-         
+
             $("#product_tbl tbody").append(tr_str);
+            
+
         }
         
 
@@ -136,9 +137,7 @@
        var quantity_field = "quantity"+id;
        var gg = $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) + 1) ;
        var jj =gg.val();
-    //    alert(jj);
-       
-       
+
    }
    function decrement(id) {
        var quantity_field = "quantity"+id;
