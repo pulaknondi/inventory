@@ -47,8 +47,7 @@
                                             <th>Tax</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                                                         
+                                    <tbody>                       
                                     </tbody>
                                 </table>
                             </div>
@@ -67,7 +66,7 @@
 
 <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $(document).ready(function(){
+    $(document).ready(function(e){
 
       $('#but_search').click(function(){
         var pro_id = Number($('#select2-search-container option:selected').val());
@@ -85,12 +84,16 @@
         }
       });
 
+    
+      
    });
+
+
 
 
     function createRows(response){
       var len = 0;
-      $('#product_tbl tbody').empty();
+
       if(response['data'] != null){
          len = response['data'].length;
       }
@@ -101,18 +104,21 @@
            var name = response['data'][i].name;
            var cost = response['data'][i].cost;
            var qty = response['data'][i].qty;
-          
+
            var tr_str = "<tr>" +
-             "<td align='center'>" + (i+1) + "</td>" +
+             "<td align='center'>" + (id) + "</td>" +
              "<td align='center'>" + name + "</td>" +
              "<td align='center'>" + cost + "</td>" +
              "<td align='center'><span class='badge badge-pill badge-light-warning mr-1'>" + qty + "</span></td>" +
-             "<td align='center'><div class='input-group'><input type='text' class='touchspin-color' value='1' data-bts-button-down-class='btn btn-success' data-bts-button-up-class='btn btn-success' /></div></td>" +
+             "<td align='center'><div class='input-group'><input type='button' id='decrement' value='-' class='btn btn-primary' onclick='decrement("+id+")'><input type='text' id='quantity"+id+"' class='form-control' value='1' data-bts-button-down-class='btn btn-success' data-bts-button-up-class='btn btn-success' /><input type='button' id='increment' value='+' class='increment btn btn-primary' onclick='increment("+id+")'></div></td>" +
              "<td align='center'></td>" +
              "<td align='center'></td>" +
            "</tr>";
-           $("#product_tbl tbody").append(tr_str);
+          
+         
+            $("#product_tbl tbody").append(tr_str);
         }
+        
 
       }else{
          var tr_str = "<tr>" +
@@ -123,5 +129,21 @@
       }
     } 
    </script>
-  
+   
+   <script>
+
+   function increment(id) {
+       var quantity_field = "quantity"+id;
+       var gg = $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) + 1) ;
+       var jj =gg.val();
+    //    alert(jj);
+       
+       
+   }
+   function decrement(id) {
+       var quantity_field = "quantity"+id;
+       $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) - 1) ;
+   }
+   </script>
+
 @endsection        
