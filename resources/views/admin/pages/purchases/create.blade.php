@@ -15,7 +15,7 @@
                         <div class="col-md-6 mb-1">
                             <select class="select2 form-control form-control-lg" id='select2-search-container' name='search'>
                                 <?php foreach($products as $product): ?>
-                                <option value="{{ $product->id}}">{{ $product->name}}</option>
+                                <option value="{{ $product->id}}">{{ $product->name}}({{$product->code}})</option>
                                 <?php endforeach; ?>
                             </select>
                                  
@@ -46,6 +46,7 @@
                                             <th>Discount</th>
                                             <th>Tax</th>
                                             <th>Total</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>                       
@@ -84,14 +85,8 @@
            });
         }
       });
-
-    
-      
+   
    });
-
-
-
-
     function createRows(response){
       var len = 0;
 
@@ -106,34 +101,33 @@
            var cost = response['data'][i].cost;
            var qty = response['data'][i].qty;
   
-           var tr_str = "<tr>" +
+           var tr_str = "<tr id='"+id+"'>" +
              "<td align='center'>" + (id) + "</td>" +
-             "<td align='center'>" + name + "</td>" +
+             "<td align='center'>" + name +"</td>" +
              "<td align='center'><input type='text' class='form-control' id='disabledInput"+id+"' readonly='readonly' value='" + cost + "' /></td>" +
              "<td align='center'><span class='badge badge-pill badge-light-warning mr-1'>" + qty + "</span></td>" +
              "<td align='center'><div class='input-group'><input type='button' id='decrement' value='-' class='btn btn-primary' onclick='decrement("+id+")'><input type='text' id='quantity"+id+"' class='form-control' value='1' data-bts-button-down-class='btn btn-success' data-bts-button-up-class='btn btn-success' /><input type='button' id='increment' value='+' class='increment btn btn-primary' onclick='increment("+id+")'></div></td>" +
              "<td align='center'></td>" +
              "<td align='center'></td>" +
-             "<td align='center'><input type='text' class='form-control' id='total"+id+"' class='total"+id+"' readonly='readonly' value='' /></td>" +
-           "</tr>";
-
-           $("#product_tbl tbody").append(tr_str);
+             "<td align='center'><input type='text' class='form-control' id='total"+id+"' class='total"+id+"' readonly='readonly' value='"+(cost* 1)+"' /></td>" +
+             "<td align='center'><button class='btn btn-outline-danger text-nowrap px-1' onclick='btnDelete("+id+")'><i data-feather='x' class='mr-25'></i><span>Delete</span></button></td>" +
+            "</tr>";
+           
+            $("#product_tbl tbody").append(tr_str);
         }
-        
-
-      }else{
+        }else{
          var tr_str = "<tr>" +
            "<td align='center'>No record found.</td>" +
          "</tr>";
 
          $("#product_tbl tbody").append(tr_str);
-      }
+        }
     } 
    </script>
    
    <script>
 
-   function increment(id) {
+    function increment(id) {
        var quantity_field = "quantity"+id;
        var cost_field = "disabledInput"+id;
        var total_field = "total"+id;
@@ -142,13 +136,21 @@
        var total_qnty =  parseInt(quanitty.val());
        var sum = total_cost*total_qnty;
        var total_input =parseInt($("#"+total_field).val(sum));
-
-       
-   }
-   function decrement(id) {
+    }
+    function decrement(id) {
        var quantity_field = "quantity"+id;
-       $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) - 1) ;
-   }
+       var cost_field = "disabledInput"+id;
+       var total_field = "total"+id;
+       var quanitty = $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) - 1) ;
+       var total_cost = parseInt($("#"+cost_field).val());
+       var total_qnty =  parseInt(quanitty.val());
+       var sum = total_cost*total_qnty;
+       var total_input =parseInt($("#"+total_field).val(sum));
+    }
+    function btnDelete(id) {
+       $("#" + id).remove();   
+    }
+
    </script>
 
 @endsection        
