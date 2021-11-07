@@ -45,6 +45,7 @@
                                             <th>Qty</th>
                                             <th>Discount</th>
                                             <th>Tax</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>                       
@@ -108,16 +109,15 @@
            var tr_str = "<tr>" +
              "<td align='center'>" + (id) + "</td>" +
              "<td align='center'>" + name + "</td>" +
-             "<td align='center'>" + cost + "</td>" +
+             "<td align='center'><input type='text' class='form-control' id='disabledInput"+id+"' readonly='readonly' value='" + cost + "' /></td>" +
              "<td align='center'><span class='badge badge-pill badge-light-warning mr-1'>" + qty + "</span></td>" +
              "<td align='center'><div class='input-group'><input type='button' id='decrement' value='-' class='btn btn-primary' onclick='decrement("+id+")'><input type='text' id='quantity"+id+"' class='form-control' value='1' data-bts-button-down-class='btn btn-success' data-bts-button-up-class='btn btn-success' /><input type='button' id='increment' value='+' class='increment btn btn-primary' onclick='increment("+id+")'></div></td>" +
              "<td align='center'></td>" +
              "<td align='center'></td>" +
+             "<td align='center'><input type='text' class='form-control' id='total"+id+"' class='total"+id+"' readonly='readonly' value='' /></td>" +
            "</tr>";
 
-            $("#product_tbl tbody").append(tr_str);
-            
-
+           $("#product_tbl tbody").append(tr_str);
         }
         
 
@@ -135,9 +135,15 @@
 
    function increment(id) {
        var quantity_field = "quantity"+id;
-       var gg = $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) + 1) ;
-       var jj =gg.val();
+       var cost_field = "disabledInput"+id;
+       var total_field = "total"+id;
+       var quanitty = $("#"+quantity_field).val(parseInt($("#"+quantity_field).val()) + 1) ;
+       var total_cost = parseInt($("#"+cost_field).val());
+       var total_qnty =  parseInt(quanitty.val());
+       var sum = total_cost*total_qnty;
+       var total_input =parseInt($("#"+total_field).val(sum));
 
+       
    }
    function decrement(id) {
        var quantity_field = "quantity"+id;
