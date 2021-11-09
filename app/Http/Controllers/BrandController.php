@@ -36,6 +36,7 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         try {
             // return $request;
             $image      = $request->file('image');

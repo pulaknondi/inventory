@@ -6,6 +6,7 @@ use App\Models\purchases;
 use App\Models\product;
 use Illuminate\Http\Request;
 
+
 class PurchasesController extends Controller
 {
     /**
@@ -38,7 +39,9 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $input = $request->all();
+        dd($input);
     }
 
     /**
