@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Models\purchases;
+use App\Models\suppliers;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -26,9 +27,10 @@ class PurchasesController extends Controller
      */
     public function create()
     {
-        $products = product::all(); 
-        
-        return view('admin.pages.purchases.create',compact('products'));
+        $products  = product::all(); 
+        $suppliers = suppliers::all();
+
+        return view('admin.pages.purchases.create',compact('products','suppliers'));
     }
 
     /**
@@ -39,9 +41,17 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-
-        $input = $request->all();
-        dd($input);
+        $data[]=$request->all();
+        
+        foreach($data as $key => $d ){
+           
+            $Product = Product::where('id',$d['pro_id'])->first();
+            $pro_key = $d['pro_qty'][$key];
+            $Product->qty  = intval($pro_key);
+            $Product->save();
+            
+        }
+        return redirect()->to('/purchases');
     }
 
     /**
